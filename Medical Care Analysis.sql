@@ -11,7 +11,7 @@ GROUP BY Indicator, Subgroups, Percent_Affected, Time_Period_End_Date ORDER BY T
 SELECT Subgroups, MAX(Percent_Affected) AS 'Lowest_Access_Point' FROM Reduced_Access
 WHERE Groupings = 'BY AGE' AND Indicator = 'Did Not Get Needed Care, Last 4 Weeks'
 GROUP BY Subgroups ORDER BY Lowest_Access_Point DESC
---Group the Time Period End Dates by Season based on Calendar Season start and end dates using case. This will allow us to query data by season, our new value. This requires a little bit more complex of a query, but it shows us som pretty cool data, like this one below- we can see that the highest average number of patients who did not receive care when they should have (Average_Percent_Affected filtered by "Did Not Get Needed Care, Last 4 Weeks"), was highest in Spring 2020 at 31.98%, compared to Spring 2021 at 14.98% when cases were lower, hospitals were less crowded, and people are less afraid to go to get the care they need.
+--Group the Time Period End Dates by Season based on Calendar Season start and end dates using case. This will allow us to query data by season, our new value. This requires a little bit more complex of a query, but it shows us some pretty cool data, like this one below- we can see that the highest average number of patients who did not receive care when they should have (Average_Percent_Affected filtered by "Did Not Get Needed Care, Last 4 Weeks"), was highest in Spring 2020 at 31.98%, compared to Spring 2021 at 14.98% when cases were lower, hospitals were less crowded, and people are less afraid to go to get the care they need.
 SELECT Season, AVG(Percent_Affected) AS Average_Percent_Affected from (
 SELECT Subgroups, Percent_Affected, Time_Period_End_Date,
 CASE
